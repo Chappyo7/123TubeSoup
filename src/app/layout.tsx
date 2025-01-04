@@ -1,8 +1,10 @@
-import { AuthProvider } from '../providers/AuthProvider';
-import { Inter } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
 import '../styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+export const metadata = {
+  title: 'TubeSoup',
+  description: 'Video analysis and outline generation tool',
+};
 
 export default function RootLayout({
   children,
@@ -10,12 +12,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <AuthProvider>
+    <ClerkProvider>
+      <html lang="en">
+        <body className="min-h-screen bg-white dark:bg-slate-900">
           {children}
-        </AuthProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
